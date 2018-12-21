@@ -1,8 +1,35 @@
+
 doctype html
 head
   meta(charset='UTF-8')
   title The Avocado Hunt
   script(src='//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js')
   link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
-body
-  h1 = 'Hi'
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+  script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
+
+body.center-align
+  img(src='/assets/images/avocadohunt.png', alt='Avocado Hunt', width='400', height='300')
+
+
+  h3.flow-text
+    | Meet The Hunters:
+
+  #vue-element2
+    .row
+      ul.collection(v-if='players.length')
+        li.collection__user(v-for='(player, index) in players')
+          h4.flow-text {{ player }}
+
+
+
+  #vue-element
+    div
+      span
+        a.waves-effect.waves-light.btn-large.green.darken-2(v-on:click='moveMenu()')
+          i.material-icons.left arrow_back
+          | Main Menu
+
+  script(src='/js/userdata.js')
+  script(src='/js/mainmenu.js')

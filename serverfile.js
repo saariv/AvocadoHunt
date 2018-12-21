@@ -2,7 +2,18 @@
 // Libraries
 var express = require('express');
 var app = express();
+var async = require('async');
 
+//Import the mongoose module
+var mongoose = require('mongoose');
+
+//Set up default mongoose connection
+var mongoDB = 'mongodb://avocadofarmer:Farmer2018@ds137404.mlab.com:37404/avocadogame';
+mongoose.connect(mongoDB);
+// Get Mongoose to use the global promise library
+mongoose.Promise = global.Promise;
+//Get the default connection
+var db = mongoose.connection;
 
 //listen to the port 8080 or user's choice in terminal
 const port = process.env.PORT || 8080;
@@ -48,3 +59,7 @@ app.get('/', (req,res) =>{
 
 //use libraries, js and css- files etc
 app.use(express.static(__dirname + '/public'));
+
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));

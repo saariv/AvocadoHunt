@@ -35,6 +35,7 @@ var music;
 
 
 
+
 function preload ()
 {	//load game assets
   this.load.image('factory', 'assets/images/factory.png');
@@ -143,7 +144,7 @@ function update ()
 {
     if (gameOver)
     {
-        return;
+      return;
     }
 
     if (cursors.left.isDown)
@@ -222,8 +223,7 @@ function hitBomb (player, bomb)
     player.setTint(0xff0000);
 
     player.anims.play('turn');
-
-    this.add.image('thankyou');
+    alert('Game over!');
     gameOver = true;
 
 }

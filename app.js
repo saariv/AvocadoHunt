@@ -6,22 +6,21 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
-// //Set up mongoose connection
-// var mongoose = require('mongoose');
-// var mongoDB = 'https://mlab.com/databases/avocadogame';
-// mongoose.connect(mongoDB);
-// mongoose.Promise = global.Promise;
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+//Import the mongoose module
+var mongoose = require('mongoose');
 
+//Set up default mongoose connection
+var mongoDB = 'mongodb://avocadofarmer:Farmer2018@ds137404.mlab.com:37404/avocadogame';
+mongoose.connect(mongoDB);
+// Get Mongoose to use the global promise library
+mongoose.Promise = global.Promise;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+//Get the default connection
+var db = mongoose.connection;
 
-
-//Bind connection to error event (to get notification of connection errors)
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

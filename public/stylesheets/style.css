@@ -1,13 +1,28 @@
 body {
   background-color: black;
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif,white;
 }
 
 a {
   color: #00B7FF;
 }
+
 h3{
+  font: 12px, "Lucida Grande";
+  color: white;
+}
+
+h1{
+  font: 16px, "Lucinda Grande";
+  color: #388e3c;
+}
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+li.collection__user{
   font: 12px, "Lucida Grande";
   color: white;
 }

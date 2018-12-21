@@ -9,14 +9,17 @@ html
     script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
     meta(charset='utf-8')
   body.center-align
-    img(src='/assets/images/avocadohunt.png', alt='start the game', width='400', height='300')
+    img(src='/assets/images/avocadohunt.png', alt='Avocado Hunt', width='400', height='300')
 
-    h1 The hunt for the best avocados!
-      h3
-        | You are on your lunch break in a top class electric vehicle factory, and you are the boss!
-      h3
-        | The mission is to collect as many avocados you can, before the evil fire catches you! Every avocado is worth 15 points
-
+    h1.flow-text
+      b The hunt for the best avocados!
+    h3.flow-text
+      | You are on your lunch break in a top class electric vehicle factory, and you are the boss!
+    h3.flow-text
+      | The mission is to collect as many avocados you can, before the evil fire catches you!
+      br
+      | Every avocado is worth 15 points
+    br
     #vue-element
       div
         span

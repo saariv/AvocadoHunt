@@ -9,7 +9,7 @@ var app = new Vue({
 
     methods: {
       moveGame () {
-        location.href='/user'
+        location.href='/game'
       },
 
       moveAbout(){
@@ -22,6 +22,9 @@ var app = new Vue({
       moveBack(){
         location.href='/mainmenu'
       },
+      moveMenu(){
+        location.href='/mainmenu'
+      }
 
     }
   })
