@@ -26,3 +26,13 @@ li.collection__user{
   font: 12px, "Lucida Grande";
   color: white;
 }
+
+h4.{
+  font: 12px, "Lucinda Grande";
+  color: white;
+}
+
+canvas {
+  display : block;
+  margin : auto;
+}

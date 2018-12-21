@@ -49,8 +49,8 @@ app.get('/stats', (req, res) => {
     res.render('stats')
 })
 //create user page
-app.get('/user', (req, res) => {
-    res.render('user')
+app.get('/score', (req, res) => {
+    res.render('score')
 })
 //redirect to beginning
 app.get('/', (req,res) =>{

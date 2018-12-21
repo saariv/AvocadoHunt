@@ -28,10 +28,13 @@ var bombs;
 var platforms;
 var cursors;
 var score = 0;
+var highscore = 0;
 var level = 1;
 var gameOver = false;
 var scoreText;
 var music;
+var clickButton;
+
 
 
 
@@ -211,19 +214,40 @@ function collectavocado (player, avocado)
     }
 }
 
+if (this.localStorage) {
+    localStorage.score = this.score;
+    if (localStorage.highScore) {
+        if (localStorage.score > localStorage.highScore) {
+            localStorage.highScore = localStorage.score;
+        }
+    }
+    else {
+        localStorage.highScore = localStorage.highScore;
+    }
+}
+
 function hitBomb (player, bomb)
 {
 
-
     let playSound3 = this.sound.add('gameover');
     playSound3.play();
-
+    game.sound.mute=true;
+    //player turns around, turns red and physics pause
     this.physics.pause();
-
     player.setTint(0xff0000);
-
     player.anims.play('turn');
-    alert('Game over!');
+    //game over
+    OverText = this.add.text(250, 150, 'Game Over!', {fontSize: '50px',  fill: '#FFFFFF' });
+
+    //store player's score to local storage
+    localStorage.setItem('newscore',score);
+    //check highscore and load to local storage
+    localStorage.setItem('highscore',highscore),
+    //button to creating user and seeing highscores
+
+    clickButton = this.add.text(250, 200, 'Submit score!', {fontSize: '50px',  fill: '#FFFFFF' });
+    clickButton.setInteractive()
+    clickButton.on('pointerdown', () => location.href='/score');
     gameOver = true;
 
 }
