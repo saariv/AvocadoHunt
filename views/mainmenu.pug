@@ -1,0 +1,34 @@
+doctype html
+
+html
+  head
+    title The Avocado Hunt - Main Menu
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
+    meta(charset='utf-8')
+  body.center-align
+    img(src='/assets/images/avocadohunt.png', alt='start the game', width='400', height='300')
+
+  #vue-element
+    div
+      span
+        a.waves-effect.waves-light.btn-large.green.darken-2(v-on:click='moveGame()')
+          i.material-icons.left play_circle_outline
+          | Start Game
+
+    div
+      br
+      span
+        a.waves-effect.waves-light.btn-large.green.darken-4(v-on:click='moveAbout()')
+          i.material-icons.left chat
+          | About
+    div
+      br
+      span
+        a.waves-effect.waves-light.btn-large.teal.darken-4(v-on:click='moveStats()')
+          i.material-icons.left insert_chart
+          | Stats
+
+    script(src='/js/mainmenu.js')

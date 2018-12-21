@@ -1,0 +1,26 @@
+doctype html
+
+html
+  head
+    title The Avocado Hunt - About
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
+    meta(charset='utf-8')
+  body.center-align
+    img(src='/assets/images/avocadohunt.png', alt='start the game', width='400', height='300')
+
+    h1 The hunt for the best avocados!
+      h3
+        | You are on your lunch break in a top class electric vehicle factory, and you are the boss!
+      h3
+        | The mission is to collect as many avocados you can, before the evil fire catches you! Every avocado is worth 15 points
+
+    #vue-element
+      div
+        span
+          a.waves-effect.waves-light.btn-large.green.darken-2(v-on:click='moveBack()')
+            i.material-icons.left arrow_back
+
+    script(src='/js/mainmenu.js')
