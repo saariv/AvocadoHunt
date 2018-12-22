@@ -10,7 +10,7 @@ var app =new Vue ({
 
     data () {
       return {
-        UserName: '' + newscore,
+        UserName: '' +'  ' newscore,
         players: [
           'Monkey' + 100 ,
           'MikkiHiiri' + 150,
