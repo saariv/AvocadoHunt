@@ -1,5 +1,9 @@
 
 'use strict';
+
+// data handler file, used in score.pug and stats.pug
+//I tried to handle data with mongoose connection, but didn't manage to get it work together with phaser 3. MongoDB connections are commented off.
+
 // var mongoose = require('mongoose');
 // //define schema
 // var Schema = mongoose.Schema;
@@ -47,7 +51,7 @@ var app =new Vue ({
         this.itemName ='';
         this.saveplayers();
       },
-//tallennetaan playerit välimuistiin
+//save players to localstorage
       saveplayers(){
         let parsed = JSON.stringify(this.players);
         localStorage.setItem('players', parsed);
@@ -69,7 +73,7 @@ var app =new Vue ({
             e.preventDefault();
 
      },
-
+//name validation
      validName: function (itemName) {
        var re = /[a-zA-Z0-9,.]/;
         return re.test(itemName);

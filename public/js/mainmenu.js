@@ -1,5 +1,6 @@
 'use strict';
-
+//mainmenu js- file for buttons to other pages and back
+//operated with vue, instance #vue-element 
 var app = new Vue({
   el: '#vue-element',
   data: {

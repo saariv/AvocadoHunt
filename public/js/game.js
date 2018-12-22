@@ -1,4 +1,4 @@
-
+//The actual game, done with Phaser 3.
 //configuration for the game: type, size, physics, scene
 var config = {
     type: Phaser.AUTO,
@@ -41,7 +41,7 @@ var clickButton2;
 
 
 function preload ()
-{	//load game assets
+{	//load game assets: images and audio
   this.load.image('factory', 'assets/images/factory.png');
   this.load.image('ground', 'assets/images/platform.png');
   this.load.image('jumppoint','assets/images/platform_small.png')
@@ -51,7 +51,7 @@ function preload ()
   this.load.image('lightning', 'assets/images/lightning.png');
   this.load.image('titlescreen','assets/images/titlescreen.png');
   this.load.image('startgame','assets/images/startgame.png');
-  this.load.spritesheet('elon', 'assets/images/elon.png', { frameWidth: 40, frameHeight: 60 });
+  this.load.spritesheet('elon', 'assets/images/elon.png', { frameWidth: 40, frameHeight: 60 }); //define spritesheet
   this.load.image('thankyou','assets/images/thankyou.png');
   this.load.audio('peli','assets/audio/peli.mp3')
   this.load.audio('point','assets/audio/point.mp3')
@@ -64,9 +64,10 @@ function create ()
     let playSound = this.sound.add('peli');
     playSound.play();
 
-    // background for the game
+    // background image for the game
     this.add.image(400, 300, 'factory');
 
+    //set highscore for the game
     var highScore = localStorage.highScore
 
     //  The platforms group contains the ground and the 4 ledges we can jump on
@@ -110,7 +111,7 @@ function create ()
         repeat: -1
     });
 
-    //  Input Events
+    //  Input Events, cursor keys
     cursors = this.input.keyboard.createCursorKeys();
 
     //  Avocados to collect, 12 in total (evenly distributed in the platform)
@@ -127,13 +128,11 @@ function create ()
 
     });
 
-
-
+    //define bombs (fire emojis)
     bombs = this.physics.add.group();
 
     //  Score and Level info, uppercorner of the game
     scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '40px', fill: '#FFFFFF' });
-
     levelText = this.add.text(16, 60, 'Level: 1', { fontSize: '40px', fill: '#FFFFFF' });
 
     //  Collide the player and the avocados with the platforms
@@ -182,11 +181,11 @@ function update ()
 function collectavocado (player, avocado)
 {
     let playSound2 = this.sound.add('point');
-    playSound2.play(); //short plop voice when avocado is picked
+    playSound2.play(); //short plop-voice when avocado is picked
 
     avocado.disableBody(true, true);
 
-    //  Update the score, each avocado is 15 points
+    //  Update the score, each avocado is worth 15 points
     score += 15;
     scoreText.setText('Score: ' + score);
 
@@ -208,7 +207,7 @@ function collectavocado (player, avocado)
         bomb.setCollideWorldBounds(true);
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
         bomb.allowGravity = false;
-        //Update level, every new bomb = new level
+        //Update level, every new bomb = new level, beginning level is 1
         level += 1;
         levelText.setText('Level: ' + level);
 
@@ -216,7 +215,7 @@ function collectavocado (player, avocado)
 
 
     }
-}
+} //update highscore if needed
 function seeScore(){
     if (this.localStorage) {
         localStorage.score = this.score;
@@ -231,26 +230,26 @@ function seeScore(){
         }
     }}
 
-function hitBomb (player, bomb)
+function hitBomb (player, bomb) //end of the game
 {
-
+    //small fire sound when game ends
     let playSound3 = this.sound.add('gameover');
     playSound3.play();
+    //mute all sounds
     game.sound.mute=true;
     //player turns around, turns red and physics pause
     this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('turn');
-    //game over
-
+    //Game Over - text and Submit Result and Play again - buttons appear on screen -> different colors
     OverText = this.add.text(250, 150, 'Game Over', {fontSize: '50px',  fill: '#ff0000' });
     seeScore();
-    localStorage.setItem('score',score);
-    localStorage.setItem('highScore',highScore);
-
     clickButton = this.add.text(250, 200, 'Submit result', {fontSize: '50px',  fill: '#FFFFFF' });
     clickButton2 = this.add.text(250,250, 'Play again', {fontSize: '50px', fill: '#00ff00'});
-
+    //save score and highscore to local storage
+    localStorage.setItem('score',score);
+    localStorage.setItem('highScore',highScore);
+    //button pressed -> move to score page or play again
     clickButton.setInteractive()
     clickButton.on('pointerdown', () => location.href='/score');
 
