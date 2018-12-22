@@ -1,8 +1,7 @@
 'use strict'
 document.addEventListener( "DOMContentLoaded", function(){
 
-
-var newscore = localStorage.getItem(newscore);
+var score;
 
 var app =new Vue ({
     el: '#vue-element2',
@@ -10,24 +9,24 @@ var app =new Vue ({
 
     data () {
       return {
-        UserName: '' +'  ' newscore,
+        UserName: '',
         players: [
-          'Monkey' + 100 ,
-          'MikkiHiiri' + 150,
-          'Maikku91' + 300,
+          'Monkey',
+          'MikkiHiiri',
+          'Maikku91',
         ],
       };
     },
 
     mounted() {
 
-      if(localStorage.getItem('Players')) {
-        try {
-          this.players = JSON.parse(localStorage.getUser('Players'));
-        } catch(e) {
-          localStorage.removeUser('Players');
-        }
-      }
+      // if(localStorage.getUser('Players')) {
+      //   try {
+      //     this.players = JSON.parse(localStorage.getUser('Players'));
+      //   } catch(e) {
+      //     localStorage.removeUser('Players');
+      //   }
+      // }
     },
 
     methods: {
@@ -45,3 +44,5 @@ var app =new Vue ({
     //   },
       },
     })})
+
+score= localStorage.getItem('score');

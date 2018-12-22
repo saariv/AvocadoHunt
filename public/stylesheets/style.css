@@ -36,3 +36,8 @@ canvas {
   display : block;
   margin : auto;
 }
+input.placeholder{
+  color:white;
+  font: 12px, "Lucinda Grande", white;
+  align: center;  
+}

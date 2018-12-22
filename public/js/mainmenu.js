@@ -1,6 +1,5 @@
 'use strict';
 
-
 var app = new Vue({
   el: '#vue-element',
   data: {
@@ -8,6 +7,7 @@ var app = new Vue({
   },
 
     methods: {
+
       moveGame () {
         location.href='/game'
       },
@@ -26,5 +26,5 @@ var app = new Vue({
         location.href='/mainmenu'
       }
 
-    }
-  })
+
+  }})

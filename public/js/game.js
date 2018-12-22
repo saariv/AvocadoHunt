@@ -28,13 +28,13 @@ var bombs;
 var platforms;
 var cursors;
 var score = 0;
-var highscore = 0;
+var highScore = 0;
 var level = 1;
 var gameOver = false;
 var scoreText;
 var music;
 var clickButton;
-
+var ResultText;
 
 
 
@@ -65,6 +65,8 @@ function create ()
 
     // background for the game
     this.add.image(400, 300, 'factory');
+
+    var highScore = localStorage.highScore
 
     //  The platforms group contains the ground and the 4 ledges we can jump on
     platforms = this.physics.add.staticGroup();
@@ -130,6 +132,7 @@ function create ()
 
     //  Score and Level info, uppercorner of the game
     scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '40px', fill: '#FFFFFF' });
+
     levelText = this.add.text(16, 60, 'Level: 1', { fontSize: '40px', fill: '#FFFFFF' });
 
     //  Collide the player and the avocados with the platforms
@@ -213,18 +216,20 @@ function collectavocado (player, avocado)
 
     }
 }
+function seeScore(){
+    if (this.localStorage) {
+        localStorage.score = this.score;
+        if (localStorage.highScore) {
+            if (localStorage.score > localStorage.highScore) {
+                localStorage.highScore = localStorage.score;
+                ResultText = this.add.text(250, 220, 'New highScore!', {fontSize: '50px',  fill: '#FFFFFF' });
 
-if (this.localStorage) {
-    localStorage.score = this.score;
-    if (localStorage.highScore) {
-        if (localStorage.score > localStorage.highScore) {
-            localStorage.highScore = localStorage.score;
+            }
         }
-    }
-    else {
-        localStorage.highScore = localStorage.highScore;
-    }
-}
+        else {
+            localStorage.highScore = localStorage.highScore;
+        }
+    }}
 
 function hitBomb (player, bomb)
 {
@@ -237,15 +242,14 @@ function hitBomb (player, bomb)
     player.setTint(0xff0000);
     player.anims.play('turn');
     //game over
-    OverText = this.add.text(250, 150, 'Game Over!', {fontSize: '50px',  fill: '#FFFFFF' });
 
-    //store player's score to local storage
-    localStorage.setItem('newscore',score);
-    //check highscore and load to local storage
-    localStorage.setItem('highscore',highscore),
-    //button to creating user and seeing highscores
+    OverText = this.add.text(250, 150, 'Game Over', {fontSize: '50px',  fill: '#FFFFFF' });
+    seeScore();
 
-    clickButton = this.add.text(250, 200, 'Submit score!', {fontSize: '50px',  fill: '#FFFFFF' });
+    clickButton = this.add.text(250, 200, 'Submit result', {fontSize: '50px',  fill: '#FFFFFF' });
+    localStorage.setItem('score',score);
+    localStorage.setItem('highScore',highScore);
+
     clickButton.setInteractive()
     clickButton.on('pointerdown', () => location.href='/score');
     gameOver = true;

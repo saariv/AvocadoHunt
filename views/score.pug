@@ -10,9 +10,13 @@ head
 body.center-align
   img(src='/assets/images/avocadohunt.png', alt='Avocado Hunt', width='400', height='300')
   script(src='/js/userdata.js')
-  script(src='/js/score.js')
-  h3.flow-text
-    | Your score: {{newscore}} !:
+
+
+  h3.flow-text.collection
+      | Your score
+      script.
+        localStorage.getItem('score')
+
 
   #vue-element2
     .row

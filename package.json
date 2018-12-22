@@ -23,6 +23,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@orange-games/phaser-input": "^2.0.5",
     "nodemon": "^1.18.9"
   }
 }
