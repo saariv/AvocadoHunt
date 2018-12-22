@@ -34,7 +34,8 @@ var gameOver = false;
 var scoreText;
 var music;
 var clickButton;
-var ResultText;
+var clickButton2;
+
 
 
 
@@ -222,7 +223,6 @@ function seeScore(){
         if (localStorage.highScore) {
             if (localStorage.score > localStorage.highScore) {
                 localStorage.highScore = localStorage.score;
-                ResultText = this.add.text(250, 220, 'New highScore!', {fontSize: '50px',  fill: '#FFFFFF' });
 
             }
         }
@@ -243,15 +243,19 @@ function hitBomb (player, bomb)
     player.anims.play('turn');
     //game over
 
-    OverText = this.add.text(250, 150, 'Game Over', {fontSize: '50px',  fill: '#FFFFFF' });
+    OverText = this.add.text(250, 150, 'Game Over', {fontSize: '50px',  fill: '#ff0000' });
     seeScore();
-
-    clickButton = this.add.text(250, 200, 'Submit result', {fontSize: '50px',  fill: '#FFFFFF' });
     localStorage.setItem('score',score);
     localStorage.setItem('highScore',highScore);
 
+    clickButton = this.add.text(250, 200, 'Submit result', {fontSize: '50px',  fill: '#FFFFFF' });
+    clickButton2 = this.add.text(250,250, 'Play again', {fontSize: '50px', fill: '#00ff00'});
+
     clickButton.setInteractive()
     clickButton.on('pointerdown', () => location.href='/score');
+
+    clickButton2.setInteractive()
+    clickButton2.on('pointerdown', () => location.href='/game');
     gameOver = true;
 
 }

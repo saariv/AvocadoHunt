@@ -36,8 +36,18 @@ canvas {
   display : block;
   margin : auto;
 }
-input.placeholder{
+
+input.form__item{
   color:white;
   font: 12px, "Lucinda Grande", white;
-  align: center;  
+  align: center;
+}
+input, select, textarea{
+    color: white;
+}
+li.player{
+  font:12px,"Lucinda Grande",white;
+}
+ul.collection__item{
+  font:12px,"Lucinda Grande",white;
 }

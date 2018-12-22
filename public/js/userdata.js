@@ -1,48 +1,79 @@
-'use strict'
+
+'use strict';
+// var mongoose = require('mongoose');
+// //define schema
+// var Schema = mongoose.Schema;
+// var UserSchema = new Schema(
+//   {
+//     itemName: {type: String, required: true, max: 100},
+//
+//   }
+// );
 document.addEventListener( "DOMContentLoaded", function(){
 
-var score;
+
 
 var app =new Vue ({
-    el: '#vue-element2',
-    name: 'players',
+    el: '#app',
+    name: 'vue-instace',
 
     data () {
       return {
-        UserName: '',
+        itemName: '',
         players: [
-          'Monkey',
-          'MikkiHiiri',
-          'Maikku91',
+          'Heppatyttö 645',
+          'Apina 180',
+          'Inkkari_91 360',
+          'Pedro 200',
         ],
       };
     },
 
     mounted() {
 
-      // if(localStorage.getUser('Players')) {
-      //   try {
-      //     this.players = JSON.parse(localStorage.getUser('Players'));
-      //   } catch(e) {
-      //     localStorage.removeUser('Players');
-      //   }
-      // }
+      if(localStorage.getItem('players')) {
+        try {
+          this.players = JSON.parse(localStorage.getItem('players'));
+        } catch(e) {
+          localStorage.removeItem('players');
+        }
+      }
     },
 
     methods: {
-    //   addUser () {
-    //     if (!this.UserName) return;
-    //     this.players.push(this.UserName);
-    //     this.UserName ='';
-    //     this.saveplayers();
-    //   },
-    //
-    // //tallennetaan playerit välimuistiin
-    //   saveplayers(){
-    //     let parsed = JSON.stringify(this.players);
-    //     localStorage.setUser('Players', parsed);
-    //   },
+      addItem () {
+        if (!this.itemName) return;
+        this.players.push(this.itemName);
+        this.itemName ='';
+        this.saveplayers();
       },
-    })})
+//tallennetaan playerit välimuistiin
+      saveplayers(){
+        let parsed = JSON.stringify(this.players);
+        localStorage.setItem('players', parsed);
+        // //compile model from schema
+        // var UserModel = mongoose.model('players', UserSchema);
+        // //Export model
+        // module.exports = mongoose.model('players', UserSchema);
+      },
 
-score= localStorage.getItem('score');
+      checkForm: function (e) {
+
+        this.errors = [];
+        if (!this.itemName) {
+          this.errors.push("player required.");
+         } else if (!this.validName(this.itemName)) {
+         this.errors.push('Valid player required.');
+       }
+       if(!this.errors.length) return true;
+            e.preventDefault();
+
+     },
+
+     validName: function (itemName) {
+       var re = /[a-zA-Z0-9,.]/;
+        return re.test(itemName);
+   }
+      },
+    },
+  )})

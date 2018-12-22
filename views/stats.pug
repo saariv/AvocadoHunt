@@ -1,36 +1,36 @@
+html
+  head
+    title The Avocado Hunt
+    script(src='//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
+    script(src='/js/userdata.js')
 
-doctype html
-head
-  meta(charset='UTF-8')
-  title The Avocado Hunt
-  script(src='//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js')
-  link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
-  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
-  link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
-  script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
+    meta(charset='utf-8')
 
-body.center-align
-  img(src='/assets/images/avocadohunt.png', alt='Avocado Hunt', width='400', height='300')
-  script(src='/js/userdata.js')
+    body.center-align
+      img(src='/assets/images/avocadohunt.png', alt='Avocado Hunt', width='400', height='300')
 
+      #app.container
+        .row
+          h3.green.darken-2.white-text.center-align.flow-text
+            i.material-icons chevron_left
+            | Meet the Hunters
+            i.material-icons chevron_right
+        main
+          .row
+            ul.collection(v-if='players.length')
+              li.collection__item(v-for='(player, index) in players')
+                h4.white-text.flow-text {{ player }}
 
-  h3.flow-text
-    | Meet The Hunters:
-
-  #vue-element2
-    .row
-      ul.collection(v-if='players.length')
-        li.collection__players(v-for='(player, index) in players')
-          h3.flow-text {{ player }}
-
-
-
-  #vue-element
-    div
-      span
-        a.waves-effect.waves-light.btn-large.green.darken-2(v-on:click='moveMenu()')
-          i.material-icons.left arrow_back
-          | Main Menu
+      #vue-element
+        div
+          span
+            a.waves-effect.waves-light.btn-large.green.darken-2(v-on:click='moveBack()')
+              i.material-icons.left arrow_back
+              | Main Menu
 
 
-  script(src='/js/mainmenu.js')
+    script(src='/js/mainmenu.js')
