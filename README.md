@@ -12,3 +12,4 @@ Run dockerfile in terminal:
 
 3.) docker logs --follow server
 
+The Game should be seen on localhost:8080
