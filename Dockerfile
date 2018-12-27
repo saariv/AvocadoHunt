@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 8080
 
 # Start service
-CMD [ "npm","run","start" ]
+CMD [ "node", "./serverfile.js" ]
