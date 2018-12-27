@@ -1,6 +1,4 @@
-# See the used tutorial at https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
-# See also the cheat sheet at https://docs.docker.com/get-started/#recap-and-cheat-sheet
-# And https://medium.com/statuscode/dockerising-a-node-js-and-mongodb-app-d22047e2806f
+
 # Selecting Docker image for version 10
 FROM node:10
 
@@ -22,4 +20,4 @@ COPY . .
 EXPOSE 8080
 
 # Start service
-CMD [ "npm", "start" ]
+CMD [ "npm","run","start" ]
